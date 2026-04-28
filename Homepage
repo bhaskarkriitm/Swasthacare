@@ -1,0 +1,21 @@
+// src/pages/Home.jsx
+import { Link } from "react-router-dom";
+
+export default function Home() {
+  return (
+    <div className="min-h-screen bg-blue-50 flex flex-col items-center justify-center">
+      <h1 className="text-4xl font-bold text-blue-700">
+        SwasthCare 🇮🇳
+      </h1>
+      <p className="mt-4 text-gray-600">
+        Book Doctors • Consult Online • Manage Health Records
+      </p>
+
+      <div className="mt-6 space-x-4">
+        <Link to="/login" className="bg-blue-600 text-white px-6 py-2 rounded">
+          Login
+        </Link>
+      </div>
+    </div>
+  );
+}
