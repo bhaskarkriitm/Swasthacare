@@ -1,0 +1,29 @@
+// src/pages/Dashboard.jsx
+import { useEffect, useState } from "react";
+import API from "../services/api";
+
+export default function Dashboard() {
+  const [doctors, setDoctors] = useState([]);
+
+  useEffect(() => {
+    API.get("/doctors").then((res) => setDoctors(res.data));
+  }, []);
+
+  return (
+    <div className="p-6">
+      <h1 className="text-2xl font-bold">Available Doctors</h1>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+        {doctors.map((doc) => (
+          <div key={doc._id} className="p-4 bg-white shadow rounded">
+            <h2 className="font-bold">{doc.name}</h2>
+            <p>{doc.specialization}</p>
+            <button className="mt-2 bg-green-600 text-white px-4 py-1 rounded">
+              Book Appointment
+            </button>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
